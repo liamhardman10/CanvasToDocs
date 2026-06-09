@@ -1,0 +1,8 @@
+{
+  "name": "doclaunch-extension",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "echo 'Load unpacked extension in chrome://extensions'",
+    "build": "zip -r doclaunch.zip . -x '*.git*' -x 'node_modules/*' -x '*.zip'"
+  }
+}
