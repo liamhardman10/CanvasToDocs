@@ -4,14 +4,10 @@ A simple project for launching and managing Canvas assingments.
 
 ## Installation
 
-Available on Chrome Web Store.
+Available on the Chrome Web Store.
 
 ## Features
 
-- Launch documentation quickly
-- Easy configuration
+- Launch assignment documents with ease
 - Simple interface
-
-## License
-
-MIT
+- Plans to expand in the future
