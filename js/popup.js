@@ -17,7 +17,7 @@ document.getElementById('saveBtn').addEventListener('click', () => {
   
   chrome.storage.sync.set(settings, () => {
     const btn = document.getElementById('saveBtn');
-    btn.textContent = '✓ Saved!';
+    btn.textContent = 'Saved!';
     setTimeout(() => {
       btn.textContent = 'Save Settings';
     }, 1500);

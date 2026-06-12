@@ -86,6 +86,19 @@ function isButtonInjected() {
     return document.querySelector('#assignment-doc-launcher');
 }
 
+function createButtonContainer(title) {
+    const container = document.createElement('div');
+    container.id = 'assignment-doc-launcher';
+
+    const googleBtn = createButton(title, 'google');
+    const wordBtn = createButton(title, 'word');
+    
+    container.appendChild(googleBtn);
+    container.appendChild(wordBtn);
+
+    return container;
+}
+
 function init() {
     if (isButtonInjected()) return;
 
