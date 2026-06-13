@@ -1,6 +1,11 @@
 // js/content.js - DocLaunch Extension
 // Canvas-embedded document launcher with settings support
 
+console.log('🚨🚨🚨 CONTENT.JS HAS LOADED 🚨🚨🚨');
+console.log('Current URL:', window.location.href);
+console.log('Is Canvas?', window.location.href.includes('.instructure.com'));
+console.log('Is Assignment?', window.location.href.includes('/assignments/'));
+
 // ============================================
 // 1. CANVAS-SPECIFIC SELECTORS
 // ============================================
