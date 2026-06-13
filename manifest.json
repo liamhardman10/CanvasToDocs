@@ -2,6 +2,7 @@
     "manifest_version": 3,
     "name": "DocLaunch",
     "version": "1.0",
+    "description": "Open Canvas assingment in Word or Docs with ease.",
 
     "permissions": [
         "storage",
