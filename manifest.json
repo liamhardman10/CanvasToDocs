@@ -22,7 +22,6 @@
         {
             "matches": ["https://*.instructure.com/courses/*/assignments/*"],
             "js": ["js/main.js"],
-            "css": ["css/canvas-embed.css"],
             "run_at": "document_idle"
         }
     ],
