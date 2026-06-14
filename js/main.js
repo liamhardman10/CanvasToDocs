@@ -75,7 +75,6 @@ function getPositionStyle(position) {
     }
 }
 
-// Create floating button with X in corner
 // Create floating button with Google Docs logo and X in corner
 async function createFloatingButton() {
     // Don't add twice
