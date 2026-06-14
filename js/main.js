@@ -98,7 +98,7 @@ async function createFloatingButton() {
     // Main button
     const button = document.createElement('button');
     button.style.cssText = `
-        background: #4285f4;
+        background: #3f3f3f;
         color: white;
         border: none;
         border-radius: 8px;
@@ -121,7 +121,7 @@ async function createFloatingButton() {
     logo.style.cssText = `
         width: 18px;
         height: 18px;
-        vertical-align: middle;
+        vertical-align: right;
     `;
     logo.alt = 'Google Docs';
     
