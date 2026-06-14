@@ -11,8 +11,7 @@
 
     "host_permissions": [
         "https://*.instructure.com/*",
-        "https://docs.google.com/*",
-        "https://www.office.com/*"
+        "https://docs.google.com/*"
     ],
 
     "background": {
