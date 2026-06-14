@@ -138,7 +138,7 @@ async function createFloatingButton() {
     };
     button.onmouseleave = () => {
         button.style.transform = 'scale(1)';
-        button.style.background = '#3f3f3f;';
+        button.style.background = '#3f3f3f';
     };
     button.onclick = (e) => {
         if (e.target === button || e.target === text || e.target === logo) {
