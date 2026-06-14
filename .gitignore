@@ -1,0 +1,31 @@
+# Build outputs
+dist/
+releases/
+*.zip
+*.crx
+*.pem
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test files
+tests/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local

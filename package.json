@@ -1,8 +1,24 @@
 {
-  "name": "canvastodocs-extension",
+  "name": "canvastodocs",
   "version": "1.0.0",
+  "description": "Chrome extension that opens Canvas assignments directly in Google Docs",
+  "main": "js/main.js",
   "scripts": {
-    "dev": "echo 'Load unpacked extension in chrome://extensions'",
-    "build": "zip -r canvastodocs.zip . -x '*.git*' -x 'node_modules/*' -x '*.zip'"
+    "build": "node scripts/build.js",
+    "package": "npm run build && node scripts/package.js",
+    "zip": "npm run build && bestzip DocLaunch-v$npm_package_version.zip dist/*",
+    "clean": "rm -rf dist releases *.zip"
+  },
+  "keywords": [
+    "chrome-extension",
+    "canvas",
+    "google-docs",
+    "education"
+  ],
+  "author": "Liam Hardman",
+  "license": "MIT",
+  "devDependencies": {
+    "bestzip": "^2.2.5",
+    "fs-extra": "^11.3.5"
   }
 }
