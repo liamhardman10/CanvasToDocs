@@ -134,11 +134,11 @@ async function createFloatingButton() {
     
     button.onmouseenter = () => {
         button.style.transform = 'scale(1.05)';
-        button.style.background = '#3367d6';
+        button.style.background = '#222222';
     };
     button.onmouseleave = () => {
         button.style.transform = 'scale(1)';
-        button.style.background = '#4285f4';
+        button.style.background = '#3f3f3f;';
     };
     button.onclick = (e) => {
         if (e.target === button || e.target === text || e.target === logo) {
