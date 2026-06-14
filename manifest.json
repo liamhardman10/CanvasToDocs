@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "DocLaunch",
+    "name": "CanvasToDocs",
     "version": "1.0",
-    "description": "Open Canvas assingment in Word or Docs with ease.",
+    "description": "Open Canvas assignments in Google Docs with ease.",
 
     "permissions": [
         "storage",
