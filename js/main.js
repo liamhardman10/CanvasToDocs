@@ -76,6 +76,7 @@ function getPositionStyle(position) {
 }
 
 // Create floating button with X in corner
+// Create floating button with Google Docs logo and X in corner
 async function createFloatingButton() {
     // Don't add twice
     if (document.getElementById('doclaunch-floating-btn')) return;
@@ -96,21 +97,40 @@ async function createFloatingButton() {
     
     // Main button
     const button = document.createElement('button');
-    button.innerHTML = '📄 Open in Google Docs';
     button.style.cssText = `
         background: #4285f4;
         color: white;
         border: none;
         border-radius: 8px;
-        padding: 12px 20px;
+        padding: 10px 20px;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         transition: all 0.2s ease;
         font-family: inherit;
         padding-right: 35px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     `;
+    
+    // Google Docs Logo (SVG)
+    const logo = document.createElement('img');
+    logo.src = 'https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png';
+    logo.style.cssText = `
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+    `;
+    logo.alt = 'Google Docs';
+    
+    // Button text
+    const text = document.createElement('span');
+    text.textContent = 'Open in Google Docs';
+    
+    button.appendChild(logo);
+    button.appendChild(text);
     
     button.onmouseenter = () => {
         button.style.transform = 'scale(1.05)';
@@ -121,7 +141,7 @@ async function createFloatingButton() {
         button.style.background = '#4285f4';
     };
     button.onclick = (e) => {
-        if (e.target === button) {
+        if (e.target === button || e.target === text || e.target === logo) {
             const url = `https://docs.google.com/document/create?title=${encodeURIComponent(title)}`;
             chrome.runtime.sendMessage({ action: "openDocument", url: url });
         }
@@ -170,7 +190,7 @@ async function createFloatingButton() {
     wrapper.appendChild(closeBtn);
     document.body.appendChild(wrapper);
     
-    console.log('✅ Button added at position:', settings.buttonPosition);
+    console.log('Button Loaded', settings.buttonPosition);
 }
 
 // Remove existing button
