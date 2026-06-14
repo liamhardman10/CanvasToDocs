@@ -1,35 +1,22 @@
-// js/popup.js - Complete rewrite with NO direct content script messaging
+// js/popup.js - Settings that actually apply immediately
 
-// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Popup opened');
-    
-    // Load saved settings
     loadSettings();
     
-    // Setup save button
-    const saveBtn = document.getElementById('saveBtn');
-    if (saveBtn) {
-        saveBtn.addEventListener('click', saveSettings);
-    }
+    document.getElementById('saveBtn').addEventListener('click', saveSettings);
 });
 
-// Load settings from storage
 function loadSettings() {
     chrome.storage.sync.get(['defaultDocType', 'buttonPosition', 'customSelectors'], (result) => {
-        console.log('Loaded settings:', result);
+        console.log('Loaded settings into popup:', result);
         
-        const docTypeSelect = document.getElementById('defaultDocType');
-        const positionSelect = document.getElementById('buttonPosition');
-        const customInput = document.getElementById('customSelectors');
-        
-        if (docTypeSelect) docTypeSelect.value = result.defaultDocType || 'google';
-        if (positionSelect) positionSelect.value = result.buttonPosition || 'bottom-right';
-        if (customInput) customInput.value = result.customSelectors || '';
+        document.getElementById('defaultDocType').value = result.defaultDocType || 'google';
+        document.getElementById('buttonPosition').value = result.buttonPosition || 'bottom-right';
+        document.getElementById('customSelectors').value = result.customSelectors || '';
     });
 }
 
-// Save settings to storage
 function saveSettings() {
     const settings = {
         defaultDocType: document.getElementById('defaultDocType').value,
@@ -37,9 +24,11 @@ function saveSettings() {
         customSelectors: document.getElementById('customSelectors').value
     };
     
-    // Save to Chrome storage
+    console.log('Saving settings:', settings);
+    
+    // Save to storage
     chrome.storage.sync.set(settings, () => {
-        console.log('Settings saved:', settings);
+        console.log('Settings saved to storage');
         
         // Show success message
         const btn = document.getElementById('saveBtn');
@@ -52,7 +41,34 @@ function saveSettings() {
             btn.style.backgroundColor = '#1a73e8';
         }, 1500);
         
-        // DO NOT try to send message to content script from here
-        // The content script will read settings from storage when needed
+        // Send message to content script to update
+        notifyContentScript(settings);
+    });
+}
+
+function notifyContentScript(settings) {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        if (!tabs || tabs.length === 0) {
+            console.log('No active tab found');
+            return;
+        }
+        
+        const tab = tabs[0];
+        
+        // Check if we can message this tab
+        if (!tab.url || tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) {
+            console.log('Cannot message this URL:', tab.url);
+            return;
+        }
+        
+        console.log('Sending settings update to tab:', tab.id);
+        
+        // Send message to content script
+        chrome.tabs.sendMessage(tab.id, {
+            action: "settingsUpdated",
+            settings: settings
+        }).catch((error) => {
+            console.log('Could not send message to content script (page may need refresh):', error.message);
+        });
     });
 }
