@@ -11,7 +11,7 @@ function loadSettings() {
     chrome.storage.sync.get(['defaultDocType', 'buttonPosition', 'customSelectors'], (result) => {
         console.log('Loaded settings into popup:', result);
         
-        document.getElementById('defaultDocType').value = result.defaultDocType || 'google';
+        document.getElementById('defaultDocType').value = result.defaultDocType || 'docs';
         document.getElementById('buttonPosition').value = result.buttonPosition || 'bottom-right';
         document.getElementById('customSelectors').value = result.customSelectors || '';
     });
@@ -28,12 +28,12 @@ function saveSettings() {
     
     // Save to storage
     chrome.storage.sync.set(settings, () => {
-        console.log('Settings saved to storage');
+        console.log('Settings saved');
         
         // Show success message
         const btn = document.getElementById('saveBtn');
         const originalText = btn.textContent;
-        btn.textContent = '✓ Saved!';
+        btn.textContent = 'Saved!';
         btn.style.backgroundColor = '#34a853';
         
         setTimeout(() => {
