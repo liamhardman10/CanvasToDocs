@@ -1,4 +1,6 @@
-# CanvasToDocs
+<img src="logo.png" alt="logo"/>
+
+# CanvasToDocs 
 A simple project for launching and managing Canvas assingments in Google Docs.
 
 ## Installation
