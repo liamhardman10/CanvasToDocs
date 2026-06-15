@@ -1,4 +1,8 @@
-<img src="logo.png" alt="logo"/>
+<div align="center">
+  <a href="https://github.com/liamhardman10/CanvasToDocs">
+    <img src="icons/logo.png" alt="logo" width="250" height="155">
+  </a>
+</div>
 
 # CanvasToDocs 
 A simple project for launching and managing Canvas assingments in Google Docs.
