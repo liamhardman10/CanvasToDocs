@@ -17,3 +17,5 @@ Soon to be available on the Chrome Web Store.
 - Names assignments automatically in Docs
 - Popup interface
 - Plans to implement Slides & Sheets soon.
+
+[![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://www.buymeacoffee.com/liamhardman1)
